@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}User's List{% endblock title %}
+
+{% block body %}
+    <br>
+    <h1> &ensp; This is User's List.. </h1>
+    <br>
+
+    
+
+    {% for  user in user_list %}
+    <div class="card" >
+        
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}}</h5>
+          <p class="card-text">
+            <ul> 
+          
+                <li> Department : {{user.department}} </li> 
+                <li> Email : {{user.email}} </li> 
+                <li> Date : {{user.date}} </li> 
+                <br>
+             </ul>
+          </p>
+          {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+        </div>
+      </div>
+    {% endfor %}
+{%endblock body%}
