@@ -92,6 +92,7 @@
             </ul>
             <form class="d-flex" role="search" method="POST" action = {% url 'search_user' %} >
               {% csrf_token %}
+              
               <input
                 class="form-control me-2"
                 type="search"

@@ -6,6 +6,7 @@ from .forms import RegisterUserForm
 
 
 
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST ['username']

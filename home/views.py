@@ -7,6 +7,7 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from .forms import SignUpForm
 
 
 
@@ -50,7 +51,7 @@ def signup(request):
         password = request.POST.get("password")
         signup = Signup(name=name, department=department, email=email, password=password, date=datetime.today())
         signup.save()
-        # return redirect("index")
+        return redirect("index")
         # return redirect(reverse('index'))
         
     return render(request, "signup.html")
@@ -74,8 +75,28 @@ def show_info(request, signup_id):
 def search_user(request) :
     if request.method == "POST" :
         searched = request.POST['searched']
-        users = Signup.objects.filter(name_contains = searched )
-        return render(request, "search_user.html", {'searched' : searched})
-    
+        users = Signup.objects.filter(name__contains = searched )
+        return render(request, "search_user.html", {'searched' : searched, 'users' : users})
+
     else :
         return render(request, 'search_user.html', {} )
+    
+
+def update_user(request, signup_id):
+    user = Signup.objects.get(pk = signup_id)
+    form = SignUpForm(request.POST or None, instance=user)
+    if form.is_valid():
+        form.save()
+        return redirect('user_info')
+
+    return render(request, "update_user.html", 
+                  {
+                      'user' : user,
+                      'form' :  form,
+                  })
+
+
+def delete_user(request, signup_id):
+     user = Signup.objects.get(pk = signup_id)
+     user.delete()
+     return redirect('user-info')

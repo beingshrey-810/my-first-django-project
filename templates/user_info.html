@@ -24,7 +24,8 @@
       <tr>
         <th scope="row">{{user.id}}</th>
         <td><a href = "{%url 'show_info' user.id %}">{{user}} </a></td>
-       
+        <td align="right"> <a class="btn btn-outline-danger btn-sm" href="{% url 'delete_user' user.id %}">  Delete </a> </td>
+        <td align="right"> <a class="btn btn-outline-secondary btn-sm" href="{% url 'update_user' user.id %}">  Update </a> </td>
       </tr>
       {% endfor %}
     </tbody>
