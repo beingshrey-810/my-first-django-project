@@ -100,3 +100,6 @@ def delete_user(request, signup_id):
      user = Signup.objects.get(pk = signup_id)
      user.delete()
      return redirect('user-info')
+
+
+
