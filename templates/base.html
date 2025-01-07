@@ -70,6 +70,13 @@
                 <a class="nav-link" href="{% url "create_blog" %}">Create Blog</a>
               </li>
               
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "blogs_list" %}">All Blogs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "blog_info" %}">Blog Edit</a>
+              </li>
+              
               <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -93,7 +100,7 @@
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li> -->
             </ul>
-            <form class="d-flex" role="search" method="POST" action = {% url 'search_user' %} >
+            <form class="d-flex" role="search" method="POST" action = {% url 'search_blog' %} >
               {% csrf_token %}
               
               <input

@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -6,7 +7,7 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=122) 
     description = models.TextField()
-    date = models.DateField()
+    date = models.DateField(default=date.today, null=True, blank=True)
     blog_image = models.ImageField(null=True,blank=True, upload_to= "images/" )
 
     

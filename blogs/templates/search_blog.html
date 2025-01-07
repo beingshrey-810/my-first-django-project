@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Blog's List{% endblock title %}
+
+{% block body %}
+    
+    {% if searched %}
+        <h1> You searched For {{searched}} </h1>
+
+        {% for blog in blogs  %}
+           <a href= "{%url 'show_blog' blog.id %}"> {{blog}} </a><br>
+        {% endfor %}
+    
+    {% else %}
+     <h1> Hey! You Forgot To Search For a Blog.. </h1>
+    {% endif %}
+
+    
+    
+
+    
+    
+
+{%endblock body%}

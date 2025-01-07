@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Blog's List{% endblock title %}
+
+{% block body %}
+    <br>
+    <h1> &ensp; This is Blog's Info.. </h1>
+    <br>
+
+    
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for  blog in blog_info %}
+      <tr>
+        <th scope="row">{{blog.id}}</th>
+           
+        <td><a href = "{%url 'show_blog' blog.id %}">{{blog}} </a></td>
+         <td align="right"> <a class="btn btn-outline-danger btn-sm" href="{% url 'delete_blog' blog.id %}">  Delete </a> </td>
+        <td align="right"> <a class="btn btn-outline-secondary btn-sm" href="{% url 'update_blog' blog.id %}">  Update </a> </td> 
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{%endblock body%}
