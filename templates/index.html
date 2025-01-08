@@ -1,67 +1,84 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
 {% block title %}Shrey's Blogs{% endblock title %}
 
 {% block body %}
 
-<br>
-  <center>
-
+<div class="container mt-4">
+  {% load static %}
+  <!-- Welcome Message -->
+  <div class="text-center">
     {% if messages %}
         {% for message in messages  %}
-        
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
         {% endfor %}
-      {% endif %}
+    {% endif %}
+    <h1 class="display-4">Welcome, {{ request.user }}!</h1>
+    <p class="lead">Discover amazing blogs and stay updated.</p>
+  </div>
 
-    <h1 class="display-5">Welcome {{request.user}} </h1>
-  </center>
-  <br>
+  <!-- Hero Section -->
+  <div class="row mt-4">
+    <div class="col-md-6">
+      
+      <img src="{% static 'assets/10.jpg' %}" class="img-fluid rounded" alt="Blog Image">
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <p class="fs-5">Explore a world of knowledge with our curated blog posts, tailored just for you. Get insights, updates, and amazing stories right here.</p>
+    </div>
+  </div>
 
- 
-
-  <br>
-  <br>
-
-  <div class="row">
-    <div class="col-sm-6 mb-3 mb-sm-0">
+  <!-- Blog Categories -->
+  <div class="row mt-5">
+    <div class="col-md-4">
       <div class="card">
+        <img src="{% static 'assets/tech.jpg' %}" class="card-img-top" alt="Tech Blogs">
         <div class="card-body">
-          <h5 class="card-title">Read Blogs on the Go.</h5>
-          <p class="card-text">Discover insightful articles and stay updated with the latest trends and tips from our blog.</p>
-          <a href="#" class="btn btn-primary">Explore Blogs</a>
+          <h5 class="card-title">Tech Blogs</h5>
+          <p class="card-text">Stay updated with the latest technology trends and innovations.</p>
+          <a href="#" class="btn btn-primary">Explore</a>
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-md-4">
       <div class="card">
+        <img src="{% static 'assets/travel.jpg' %}" class="card-img-top" alt="Travel Blogs">
         <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">Dive into a world of knowledge with our curated blog posts, tailored just for you.</p>
-          <a href="#" class="btn btn-primary">Read More</a>
+          <h5 class="card-title">Travel Diaries</h5>
+          <p class="card-text">Explore breathtaking places and travel experiences.</p>
+          <a href="#" class="btn btn-primary">Explore</a>
         </div>
       </div>
     </div>
-
-
-    <br><br><br>
-    <div class="card text-center">
-      <div class="card-header">
-        Featured
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Latest Blog Post</h5>
-        <p class="card-text">Explore our latest insights and stay informed with our newest blog post.</p>
-        <a href="#" class="btn btn-primary">Read Now</a>
-      </div>
-      <div class="card-footer text-body-secondary">
-        2 days ago
+    <div class="col-md-4">
+      <div class="card">
+        <img src="{% static 'assets/food.webp' %}" class="card-img-top" alt="Food Blogs">
+        <div class="card-body">
+          <h5 class="card-title">Food Delights</h5>
+          <p class="card-text">Indulge in delicious recipes and culinary adventures.</p>
+          <a href="#" class="btn btn-primary">Explore</a>
+        </div>
       </div>
     </div>
+  </div>
 
+  <!-- Featured Blog -->
+  <div class="card text-center mt-5">
+    <div class="card-header bg-dark text-white">
+      Featured Blog Post
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Latest Insights</h5>
+      <p class="card-text">Discover our latest blog post and stay informed.</p>
+      <a href="#" class="btn btn-success">Read Now</a>
+    </div>
+    <div class="card-footer text-muted">
+      Posted 2 days ago
+    </div>
+  </div>
+</div>
 
-{%endblock body%}
+{% endblock body %}

@@ -1,29 +1,30 @@
-{% extends "base.html" %}
+{% extends "newbase.html" %}
 
-{% block title %}Blogs's List{% endblock title %}
+{% block title %}Blogs List{% endblock title %}
 
 {% block body %}
-    <br>
-    <h1> &ensp; This is Blog's List.. </h1>
-    <br>
+<div class="container mt-4">
+    <h1 class="mb-4">📖 Latest Blogs</h1>
 
-    
-
-    {% for  blog in blog_list %}
-    <div class="card" >
-        
-        <div class="card-body">
-          <h5 class="card-title">{{blog.title}}</h5>
-          <p class="card-text">
-            <ul> 
-          
-                
-                <li> Date : {{blog.date}} </li> 
-                <br>
-             </ul>
-          </p>
-          {% comment %} <a href="#" class="btn btn-primary">Go somewhere</a> {% endcomment %}
+    <div class="row">
+        {% for blog in blog_list %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'show_blog' blog.id %}" class="text-decoration-none text-dark">
+                <div class="card shadow-sm">
+                    <img src="{{ blog.blog_image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">
+                            <strong>Author:</strong> {{ blog.author }} <br>
+                            <strong>Date:</strong> {{ blog.date }}
+                        </p>
+                    </div>
+                </div>
+            </a>
         </div>
-      </div>
-    {% endfor %}
-{%endblock body%}
+        {% empty %}
+        <p class="text-muted">No blogs available yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
