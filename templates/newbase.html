@@ -60,8 +60,8 @@
               <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             {% endif %}
             
-            <li class="nav-item"><a class="nav-link" href="{% url 'create_blog' %}">Create Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'blogs_list' %}">All Blogs</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'create_blog' %}">Create Blog</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'blog_info' %}">Blog Edit</a></li>
           </ul>
           <form class="d-flex" method="POST" action="{% url 'search_blog' %}">
@@ -72,6 +72,8 @@
         </div>
       </div>
     </nav>
+
+    
 
     <!-- Hero Section -->
     <div class="hero">

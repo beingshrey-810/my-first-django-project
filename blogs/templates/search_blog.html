@@ -1,24 +1,38 @@
 {% extends "newbase.html" %}
 
-{% block title %}Blog's List{% endblock title %}
+{% block title %}Search Results{% endblock title %}
 
 {% block body %}
-    
+<div class="container mt-4">
     {% if searched %}
-        <h1> You searched For {{searched}} </h1>
+        <h1 class="mb-4">🔍 Search Results for "{{ searched }}"</h1>
 
-        {% for blog in blogs  %}
-           <a href= "{%url 'show_blog' blog.id %}"> {{blog}} </a><br>
-        {% endfor %}
-    
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'show_blog' blog.id %}" class="text-decoration-none text-dark">
+                    <div class="card shadow-sm">
+                        {% if blog.blog_image %}
+                        <img src="{{ blog.blog_image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                        {% else %}
+                        <img src="https://via.placeholder.com/350x200?text=No+Image" class="card-img-top" alt="No Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ blog.title }}</h5>
+                            <p class="card-text">
+                                <strong>Author:</strong> {{ blog.author }} <br>
+                                <strong>Date:</strong> {{ blog.date }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <p class="text-muted">No blogs found matching your search.</p>
+            {% endfor %}
+        </div>
     {% else %}
-     <h1> Hey! You Forgot To Search For a Blog.. </h1>
+        <h1 class="text-center mt-5">⚠️ You Forgot to Search for a Blog!</h1>
     {% endif %}
-
-    
-    
-
-    
-    
-
-{%endblock body%}
+</div>
+{% endblock body %}

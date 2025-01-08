@@ -31,7 +31,10 @@ def register_user(request):
     if request.method == "POST" :
         form = RegisterUserForm(request.POST)
         if form.is_valid() :
-            form.save()
+            user = form.save(commit=False)
+            user.is_superuser = form.cleaned_data.get("is_superuser", False)
+            user.is_staff = user.is_superuser  # Superusers must also be staff
+            user.save()  # Save to DB
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(username = username, password = password)
@@ -48,5 +51,4 @@ def register_user(request):
         'form' : form,
     })
 
- 
 # Create your views here.

@@ -14,3 +14,9 @@ urlpatterns = [
     path('delete_user/<signup_id>', views.delete_user, name="delete_user"),
     path('search_user/', views.search_user, name="search_user"),
 ]
+
+# from django.conf import settings
+# from django.conf.urls.static import static
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
